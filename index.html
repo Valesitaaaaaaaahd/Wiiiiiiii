@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información Interactiva</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+        .image-container img {
+            max-width: 200px;
+            margin-right: 70px;
+            cursor: pointer; /* Cambiar el cursor a un puntero al pasar sobre la imagen */
+        }
+        .info-container {
+            max-width: 600px;
+        }
+        .button-container {
+            margin-bottom: 10px;
+            position: relative; /* Establecer posición relativa */
+        }
+        .button-container button {
+            margin-right: 10px;
+        }
+        nav {
+            background-color: #333; /* Fondo del menú */
+            padding: 40px 0; /* Espacio interno */
+            text-align: center;
+            height: auto;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff; /* Color del texto del menú */
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        nav ul li a:hover {
+            background-color: #555; /* Cambio de color al pasar el cursor */
+        }
+        .container1{
+            background-color: grey; /* Fondo del menú */
+            padding: 40px 0; /* Espacio interno */
+            text-align: center;
+            height: auto;
+        }
+  h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+             <li><a href="#">Acerca de</a></li>
+            <li><a href="#">Contacto</a></li>
+             <li><a href="#">sobre nosotros</a></li>
+            
+        </ul>
+    </nav>
+    <h1>TAILANDIA</h1>
+    <div class="container">
+        <div class="image-container">
+            <img src=" t.jpg" alt="Descripción de la imagen" onclick="cambiarImagen()">
+        </div>
+        <div class="info-container">
+            <div class="button-container">
+                <button onclick="mostrarHistoria()">Historia</button>
+                <button onclick="mostrarresumen()">Ruta</button>
+                <button onclick="mostrarNombres()">Cultura</button>
+                <button onclick="mostrarGrupo()">Lugares vstd.</button>
+            </div>
+            <div id="info-text">
+                <p>Bienvenido. Selecciona una opción para ver la información.</p>
+            </div>
+            <div class="button-container">
+                <button id="colorButton" onclick="cambiarColor()">Cambiar Color</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Array de imágenes y su información asociada
+        var imagenes = [
+            { src: "a.jpg", info: "Rajjaprabha Dam" },
+            { src: "i.jpg", info: "The Grand Palace" },
+            { src: "l.jpg", info: "Wat Tham Suea (Tiger Cave Temple)" },
+            { src: "ba.jpg", info: "Bangkok Capital Moderna" }
+        ];
+
+        var indiceImagenActual = 0; // Índice de la imagen actual
+
+        // Función para cambiar la imagen y la información asociada
+        function cambiarImagen() {
+            indiceImagenActual = (indiceImagenActual + 1) % imagenes.length; // Cambiar al siguiente índice circularmente
+            var nuevaImagen = imagenes[indiceImagenActual]; // Obtener la nueva imagen y su información asociada
+            document.querySelector('.image-container img').src = nuevaImagen.src; // Cambiar la imagen
+            document.getElementById('info-text').innerHTML = nuevaImagen.info; // Cambiar la información asociada
+        }
+
+        // Funciones para mostrar diferentes tipos de información (simuladas)
+        function mostrarHistoria() {
+            document.getElementById('info-text').innerHTML = `
+                <h2>Historia de Tailandia</h2>
+                <p>La Historia de Tailandia comienza con la migración de los tailandeses en lo que hoy se conoce como Tailandia durante el primer milenio de nuestra era. Anteriormente a esto, habían existido civilizaciones en la edad de bronce y edad de hierro por varios miles de años, y posteriormente reinos Mon, Malayo y Jemer. Los tailandeses establecieron sus propios reinos, más prominentemente en el breve florecimiento de Sukhothai y de manera más duradera en el reino de Ayutthaya. Estos reinos estuvieron constantemente amenazados por Birmania y Vietnam, así como por rivales tailandeses y lao. Las potencias coloniales europeas amenazaron a Tailandia en el siglo xix y comienzos del siglo xx, pero Tailandia sobrevivió como el único estado del sudeste de Asia que escapó de ser colonizado. Después del final de la monarquía absoluta tailandesa en 1932, Tailandia estuvo casi seis años bajo casi permanente gobierno militar antes del establecimiento de un sistema democrático</p>
+            `;
+        }
+
+        function mostrarresumen() {
+            document.getElementById('info-text').innerHTML = `
+                <h2>Ubicación de Tailandia</h2>
+                <p>La ruta aérea más popular es la de Aeropuerto Internacional Benito Juárez de la Ciudad de México en Ciudad de México a Aeropuerto de Suvarnabhumi en Bangkok. En promedio, el vuelo de ida dura 32 horas 29 minutos, mientras que el precio del viaje redondo es de COP 9,840,740.</p>
+            `;
+        }
+
+        function mostrarNombres() {
+            document.getElementById('info-text').innerHTML = `
+                <h2>Cultura de Tailandia</h2>
+                <p>La cultura tailandesa tradicional se basa en la familia, en el respeto, la cooperación, y la ayuda al prójimo. Si pasas el suficiente tiempo en Tailandia como para observarlo, verás como cuando alguien tiene un problema, todos los que se encuentren alrededor se acercarán corriendo para ayudar.Tailandia tiene una cultura ancestral con un importante legado. Las ruinas de sus antiguas capitales como Sukhothai o Ayutthaya han conservado su identidad y su rica cultura. Posiblemente porque es el único país de la zona que nunca fue colonizado.</p>
+            `;
+        }
+
+        function mostrarGrupo() {
+            document.getElementById('info-text').innerHTML = `
+                <h2>Lugares populares de tailandia</h2>
+                <p>Las atracciones más populares en Tailandia
+Wat Pho (Templo de Buda reclinado).
+Gran Palacio de Bangkok. 
+Chatuchak Weekend Market. 
+Templo del Amanecer (Wat Arun).
+Gran Buda Phuket. 
+Casa de Jim Thompson. 
+Templo del Buda de Esmeralda. 
+BTS Skytrain.</p>
+            `;
+        }
+
+        // Función para cambiar el color de fondo (simulada)
+        function cambiarColor() {
+            var body = document.body;
+            var currentBackgroundColor = body.style.backgroundColor;
+            var currentColor = body.style.color;
+            
+            // Cambiar color de fondo y texto
+            if (currentBackgroundColor === "rgb(242, 242, 242)" && currentColor === "rgb(0, 0, 0)") {
+                body.style.backgroundColor = "#1a237e"; // Azul marino
+                body.style.color = "#fff"; // Blanco
+            } else if (currentBackgroundColor === "rgb(26, 35, 126)" && currentColor === "rgb(255, 255, 255)") {
+                body.style.backgroundColor = "#f2f2f2"; // Blanco
+                body.style.color = "#000"; // Negro
+            } else {
+                body.style.backgroundColor = "rgb(26, 35, 126)"; // Azul marino
+                body.style.color = "#fff"; // Blanco
+            }
+          
+        }
+    </script>
+    <div class="container1">
+        <ul>
+            <ol><a href="#">Inicio</a></ol>
+             <ol><a href="#">Acerca de</a></ol>
+            <ol><a href="#">Contacto</a></ol>
+             <ol><a href="#">sobre nosotros</a></ol>
+            <a href="#"><img classs="red" src="iconos.png" style="width:190px; height: 100px;"></a>
+        </ul>
+    </div>
+    
+</body>
+</html>
